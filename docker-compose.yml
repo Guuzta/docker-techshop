@@ -1,0 +1,48 @@
+services:
+  api:
+    build:
+      context: ./api_techshop
+      dockerfile: dockerfile
+    container_name: meu-backend
+    expose:
+      - "3333"
+    networks:
+      - app-network
+    volumes:
+      - ./api_techshop/prisma:/app/prisma
+    env_file:
+      - ./api_techshop/.env
+    restart: always
+
+  web:
+    build:
+      context: ./Techshop
+      dockerfile: dockerfile
+    container_name: meu-frontend
+    expose:
+      - "3000"
+    networks:
+      - app-network
+    env_file:
+      - ./Techshop/.env
+    depends_on:
+      - api
+    restart: always
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - app-network
+    depends_on:
+      - api
+      - web
+
+networks:
+  app-network:
+    driver: bridge

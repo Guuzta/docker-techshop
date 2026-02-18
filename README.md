@@ -38,7 +38,7 @@ cp Techshop/.env.example Techshop/.env
 No diretório raiz do projeto, execute:
 
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 ## Pronto! Agora você pode acessar a aplicação totalmente funcional

@@ -4,6 +4,7 @@ services:
       context: ./api_techshop
       dockerfile: dockerfile
     container_name: meu-backend
+    command: sh -c "npx prisma migrate deploy && node src/server.js"
     expose:
       - "3333"
     networks:

@@ -1,9 +1,6 @@
 [submodule "api_techshop"]
 	path = api_techshop
-	url = git@github.com:Guuzta/api_techshop.git
-[submodule "teste"]
-	path = teste
-	url = git@github.com:Guuzta/Techshop.git
+	url = https://github.com/Guuzta/api_techshop.git
 [submodule "Techshop"]
 	path = Techshop
-	url = git@github.com:Guuzta/Techshop.git
+	url = https://github.com/Guuzta/Techshop.git
